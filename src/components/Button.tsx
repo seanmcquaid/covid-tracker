@@ -4,7 +4,7 @@ import styled from 'styled-components';
 type ButtonProps = {
   onClick?: () => void;
   type: 'button' | 'submit';
-  children: String;
+  children: string;
   disabled?: boolean;
 };
 
