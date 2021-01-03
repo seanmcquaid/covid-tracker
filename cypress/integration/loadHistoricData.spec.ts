@@ -1,5 +1,3 @@
-import '@testing-library/cypress/add-commands';
-
 describe('Load Historic Data', () => {
   beforeEach(() => {
     cy.visit('/');
