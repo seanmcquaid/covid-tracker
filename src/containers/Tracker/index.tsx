@@ -7,7 +7,7 @@ import Chart from './Chart';
 import stateAbbreviations from './stateAbbreviations';
 
 const Tracker: React.FC = () => {
-  const states: string[] = useMemo(() => [...stateAbbreviations], []);
+  const states = useMemo(() => [...stateAbbreviations], []);
   const [selectedState, setSelectedState] = useState('');
   const data = useHistoricStateData(selectedState);
 
@@ -35,4 +35,6 @@ const PageContainer = styled.div``;
 
 const Header = styled.header``;
 
-const Main = styled.main``;
+const Main = styled.main`
+  height: 100%;
+`;
