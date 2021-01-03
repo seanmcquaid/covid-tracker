@@ -10,7 +10,20 @@ type ChartProps = {
 
 const Chart: React.FC<ChartProps> = memo(({ data }) => {
   const pastWeekData = data.slice(0, 7).reverse();
-  const modes = useMemo(() => ['total', 'positive', 'deathIncrease'], []);
+  const dataSetOptions = useMemo(
+    () => [
+      {
+        name: 'total',
+        displayName: 'Total',
+      },
+      {
+        name: 'positive',
+        displayName: 'Positive Cases',
+      },
+      { name: 'deathIncrease', displayName: 'Death Increase' },
+    ],
+    [],
+  );
   const [currentDataSet, setCurrentDataSet] = useState('total');
 
   const selectModeOnClick = useCallback((mode: string) => {
@@ -20,9 +33,9 @@ const Chart: React.FC<ChartProps> = memo(({ data }) => {
   return (
     <>
       <ButtonsContainer>
-        {modes.map((modeName, i) => (
-          <Button type="button" onClick={() => selectModeOnClick(modeName)} key={i}>
-            {modeName}
+        {dataSetOptions.map((dataSet, i) => (
+          <Button type="button" onClick={() => selectModeOnClick(dataSet.name)} key={i}>
+            {dataSet.displayName}
           </Button>
         ))}
       </ButtonsContainer>
