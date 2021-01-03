@@ -1,15 +1,12 @@
-import { LineChart, Line } from 'recharts';
+import { ResponsiveBar } from '@nivo/bar';
 
 type ChartProps = {
   data: any[];
 };
 
 const Chart: React.FC<ChartProps> = ({ data }) => {
-  return (
-    <LineChart width={400} height={400} data={data}>
-      <Line type="monotone" dataKey="uv" stroke="#8884d8" />
-    </LineChart>
-  );
+  // link to docs - https://nivo.rocks/bar
+  return <ResponsiveBar data={data}></ResponsiveBar>;
 };
 
 export default Chart;

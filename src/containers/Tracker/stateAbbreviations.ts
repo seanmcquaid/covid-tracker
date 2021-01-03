@@ -1,4 +1,5 @@
 const stateAbbreviations = [
+  '',
   'AL',
   'AK',
   'AZ',

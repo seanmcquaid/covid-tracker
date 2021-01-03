@@ -11,7 +11,7 @@ const useHistoricStateData = (state: string) => {
     getHistoricDataForState(state).then(({ data }) => {
       setResponse(data);
     });
-  }, []);
+  }, [state]);
 
   return response;
 };
