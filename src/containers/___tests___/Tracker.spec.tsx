@@ -1,3 +1,0 @@
-describe('Tracker', () => {
-  it('render', () => {});
-});

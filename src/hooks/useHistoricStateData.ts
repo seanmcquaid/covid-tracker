@@ -4,15 +4,16 @@ import { getHistoricDataForState } from '../services/historicDataService';
 
 const useHistoricStateData = (state: string) => {
   const [response, setResponse] = useState<StateHistoricDataResp[]>([]);
-  console.log(response);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getHistoricDataForState(state).then(({ data }) => {
       setResponse(data);
+      setIsLoading(false);
     });
   }, [state]);
 
-  return response;
+  return { response, isLoading };
 };
 
 export default useHistoricStateData;

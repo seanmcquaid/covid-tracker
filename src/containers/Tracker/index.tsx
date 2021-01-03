@@ -1,6 +1,7 @@
 import { useCallback, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import Dropdown from '../../components/Dropdown';
+import LoadingSpinner from '../../components/LoadingSpinner';
 import H1 from '../../components/Typography/H1';
 import useHistoricStateData from '../../hooks/useHistoricStateData';
 import Chart from './Chart';
@@ -9,7 +10,7 @@ import stateAbbreviations from './stateAbbreviations';
 const Tracker: React.FC = () => {
   const states = useMemo(() => [...stateAbbreviations], []);
   const [selectedState, setSelectedState] = useState(states[0]);
-  const data = useHistoricStateData(selectedState);
+  const { response, isLoading } = useHistoricStateData(selectedState);
 
   const onChange = useCallback((event?) => {
     const value = event.target.value;
@@ -23,7 +24,7 @@ const Tracker: React.FC = () => {
       </Header>
       <Main>
         <Dropdown onChange={onChange} options={states} value={selectedState} />
-        <Chart data={data} />
+        {isLoading ? <LoadingSpinner /> : <Chart data={response} />}
       </Main>
     </PageContainer>
   );

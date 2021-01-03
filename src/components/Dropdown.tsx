@@ -8,7 +8,7 @@ type DropdownProps = {
 };
 
 const Dropdown: React.FC<DropdownProps> = memo(({ options, value, onChange }) => (
-  <StyledDropdown value={value} onChange={onChange}>
+  <StyledDropdown value={value} onChange={onChange} data-testid="dropdown">
     {options.map((option, i) => (
       <Option key={i}>{option}</Option>
     ))}

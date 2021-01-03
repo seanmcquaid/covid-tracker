@@ -10,6 +10,7 @@ type ChartProps = {
 
 const Chart: React.FC<ChartProps> = memo(({ data }) => {
   const pastWeekData = data.slice(0, 7).reverse();
+  console.log(pastWeekData);
   const dataSetOptions = useMemo(
     () => [
       {
