@@ -15,7 +15,11 @@ const Dropdown: React.FC<DropdownProps> = memo(({ options, value, onChange }) =>
   </StyledDropdown>
 ));
 
-const StyledDropdown = styled.select``;
+const StyledDropdown = styled.select`
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  outline: none;
+`;
 
 const Option = styled.option``;
 

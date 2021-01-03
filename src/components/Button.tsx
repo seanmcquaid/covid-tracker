@@ -14,6 +14,16 @@ const Button: React.FC<ButtonProps> = memo(({ onClick, type, children, disabled 
   </StyledButton>
 ));
 
-const StyledButton = styled.button``;
+const StyledButton = styled.button`
+  font-size: 1rem;
+  font-family: 'Roboto', sans-serif;
+  padding: 0.75rem;
+  margin: 0.25rem;
+  outline: none;
+  border: none;
+  background-color: black;
+  color: white;
+  border-radius: 6px;
+`;
 
 export default Button;
