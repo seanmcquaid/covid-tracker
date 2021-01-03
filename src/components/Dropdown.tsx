@@ -1,15 +1,14 @@
 import { memo } from 'react';
 import styled from 'styled-components';
 
-// add in inteface for options when it's done
 type DropdownProps = {
-  options: [];
+  options: any[];
   onChange: () => void;
-  value: string;
+  value: any;
 };
 
 const Dropdown: React.FC<DropdownProps> = memo(({ options, value, onChange }) => (
-  <StyledDropdown value={value}>
+  <StyledDropdown value={value} onChange={onChange}>
     {options.map((option) => (
       <Option></Option>
     ))}
