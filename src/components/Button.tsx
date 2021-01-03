@@ -15,15 +15,19 @@ const Button: React.FC<ButtonProps> = memo(({ onClick, type, children, disabled 
 ));
 
 const StyledButton = styled.button`
-  font-size: 1rem;
+  font-size: 0.75rem;
   font-family: 'Roboto', sans-serif;
-  padding: 0.75rem;
+  padding: 1rem;
   margin: 0.25rem;
   outline: none;
   border: none;
   background-color: black;
   color: white;
   border-radius: 6px;
+  :disabled {
+    background-color: grey;
+    color: black;
+  }
 `;
 
 export default Button;

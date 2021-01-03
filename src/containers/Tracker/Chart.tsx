@@ -10,7 +10,6 @@ type ChartProps = {
 
 const Chart: React.FC<ChartProps> = memo(({ data }) => {
   const pastWeekData = data.slice(0, 7).reverse();
-  console.log(pastWeekData);
   const dataSetOptions = useMemo(
     () => [
       {
@@ -27,15 +26,20 @@ const Chart: React.FC<ChartProps> = memo(({ data }) => {
   );
   const [currentDataSet, setCurrentDataSet] = useState('total');
 
-  const selectModeOnClick = useCallback((mode: string) => {
-    setCurrentDataSet(mode);
+  const selectModeOnClick = useCallback((newDataSet: string) => {
+    setCurrentDataSet(newDataSet);
   }, []);
 
   return (
     <>
       <ButtonsContainer>
         {dataSetOptions.map((dataSet, i) => (
-          <Button type="button" onClick={() => selectModeOnClick(dataSet.name)} key={i}>
+          <Button
+            type="button"
+            onClick={() => selectModeOnClick(dataSet.name)}
+            key={i}
+            disabled={currentDataSet === dataSet.name}
+          >
             {dataSet.displayName}
           </Button>
         ))}
