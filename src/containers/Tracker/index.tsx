@@ -8,7 +8,7 @@ import stateAbbreviations from './stateAbbreviations';
 
 const Tracker: React.FC = () => {
   const states = useMemo(() => [...stateAbbreviations], []);
-  const [selectedState, setSelectedState] = useState('');
+  const [selectedState, setSelectedState] = useState(states[0]);
   const data = useHistoricStateData(selectedState);
 
   const onChange = useCallback((event?) => {
@@ -35,6 +35,4 @@ const PageContainer = styled.div``;
 
 const Header = styled.header``;
 
-const Main = styled.main`
-  height: 100%;
-`;
+const Main = styled.main``;

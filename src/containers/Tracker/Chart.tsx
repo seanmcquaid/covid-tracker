@@ -1,32 +1,34 @@
 import { ResponsiveBar } from '@nivo/bar';
 import { memo, useCallback, useMemo, useState } from 'react';
+import styled from 'styled-components';
 import Button from '../../components/Button';
+import StateHistoricDataResp from '../../models/StateHistoricDataResp';
 
 type ChartProps = {
-  data: any[];
+  data: StateHistoricDataResp[];
 };
 
 const Chart: React.FC<ChartProps> = memo(({ data }) => {
   const pastWeekData = data.slice(0, 7).reverse();
-  const modes = useMemo(() => ['positive', 'deathIncrease', 'total'], []);
-  const [currentMode, setCurrentMode] = useState('');
+  const modes = useMemo(() => ['total', 'positive', 'deathIncrease'], []);
+  const [currentDataSet, setCurrentDataSet] = useState('total');
 
-  const selectModeOnClick = useCallback((mode) => {
-    setCurrentMode(mode);
+  const selectModeOnClick = useCallback((mode: string) => {
+    setCurrentDataSet(mode);
   }, []);
 
   return (
-    <div style={{ height: '500px' }}>
+    <ChartContainer>
       <div>
         {modes.map((modeName, i) => (
-          <Button type="button" onClick={() => selectModeOnClick(modeName)}>
+          <Button type="button" onClick={() => selectModeOnClick(modeName)} key={i}>
             {modeName}
           </Button>
         ))}
       </div>
       <ResponsiveBar
         data={pastWeekData}
-        keys={[currentMode.length > 0 ? currentMode : 'total']}
+        keys={[currentDataSet]}
         indexBy="date"
         margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
         padding={0.3}
@@ -87,8 +89,12 @@ const Chart: React.FC<ChartProps> = memo(({ data }) => {
         motionStiffness={90}
         motionDamping={15}
       />
-    </div>
+    </ChartContainer>
   );
 });
+
+const ChartContainer = styled.div`
+  height: 500px;
+`;
 
 export default Chart;
